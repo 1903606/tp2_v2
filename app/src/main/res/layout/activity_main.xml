@@ -52,22 +52,6 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_mdp_confirmez"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/confirmez_votre_mot_de_passe"
-        app:endIconMode="password_toggle">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tiet_mdp_confirmez"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:maxLines="1"/>
-
-
-    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btn_connexion"

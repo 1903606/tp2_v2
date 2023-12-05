@@ -4,4 +4,9 @@
     <string name="confirmez_votre_mot_de_passe">Confirmez votre mot de passe</string>
     <string name="entrez_votre_email">Entrez votre email</string>
     <string name="connexion">Connexion</string>
+    <string name="register">Inscription</string>
+    <string name="vous_tes_connect">Vous êtes connecté!</string>
+    <string name="afficher_informations_de_mon_profil">Afficher informations de mon profil</string>
+    <string name="deconnexion">Deconnexion</string>
+    <string name="mettre_jour_mon_profil">Mettre à jour mon profil</string>
 </resources>
