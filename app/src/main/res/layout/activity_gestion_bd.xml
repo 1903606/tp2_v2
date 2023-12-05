@@ -17,6 +17,7 @@
 
    </TextView>
     <Button
+        android:id="@+id/btn_afficher_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/afficher_informations_de_mon_profil"
@@ -25,6 +26,7 @@
     </Button>
 
     <Button
+        android:id="@+id/btn_deconnexion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/deconnexion"
