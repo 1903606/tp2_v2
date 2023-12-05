@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "892974708045",
+    "project_id": "bd-tp2-v2-edc2b",
+    "storage_bucket": "bd-tp2-v2-edc2b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:892974708045:android:faae98ebe36b505c77b304",
+        "android_client_info": {
+          "package_name": "com.example.travailpratique2_v2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8KFAKy9cQ3ane35iidLyZ07ldqi6b4ks"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
