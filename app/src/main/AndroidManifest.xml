@@ -15,6 +15,12 @@
         android:theme="@style/Theme.AppCompat.Light"
         tools:targetApi="31">
         <activity
+            android:name=".InsertActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AuthActivity"
+            android:exported="false" />
+        <activity
             android:name=".ListeActivity"
             android:exported="false" />
         <activity

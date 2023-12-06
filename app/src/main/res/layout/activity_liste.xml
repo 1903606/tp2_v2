@@ -4,12 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ListeActivity">
 
     <ListView
         android:id="@+id/lv_usager"
-        android:layout_width="409dp"
-        android:layout_height="729dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp" />
+        android:layout_width="match_parent"
+        android:layout_height="391dp" />
+
+
+    <Button
+
+        android:id="@+id/btn_mise_a_jour"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mise_ajour">
+
+    </Button>
+
+    <Button
+        android:id="@+id/btn_supprimer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/supprimer">
+
+    </Button>
+
 </LinearLayout>

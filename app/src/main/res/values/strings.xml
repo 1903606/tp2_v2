@@ -20,4 +20,6 @@
     <string name="entrez_votre_telephone">Entrez votre téléphone</string>
     <string name="entrez_votre_genre">Entrez votre genre</string>
     <string name="afficher_liste">Afficher la liste des utilisateurs</string>
+    <string name="mise_ajour">Mise à jour</string>
+    <string name="supprimer">Supprimer</string>
 </resources>
