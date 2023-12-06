@@ -19,4 +19,5 @@
     <string name="entrez_votre_new_nom">Entrez votre nouveau nom</string>
     <string name="entrez_votre_telephone">Entrez votre téléphone</string>
     <string name="entrez_votre_genre">Entrez votre genre</string>
+    <string name="afficher_liste">Afficher la liste des utilisateurs</string>
 </resources>

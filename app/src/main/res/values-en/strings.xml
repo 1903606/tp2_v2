@@ -20,4 +20,6 @@
     <string name="entrez_votre_new_nom">Enter you new last name</string>
     <string name="entrez_votre_telephone">Enter you phone number</string>
     <string name="entrez_votre_genre">Enter your gender</string>
+    <string name="afficher_liste">Show user list</string>
+
 </resources>

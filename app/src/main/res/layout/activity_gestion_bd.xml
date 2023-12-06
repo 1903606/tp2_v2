@@ -26,6 +26,15 @@
     </Button>
 
     <Button
+        android:id="@+id/btn_afficher_liste"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/afficher_liste"
+        android:layout_marginTop="20dp">
+
+    </Button>
+
+    <Button
         android:id="@+id/btn_deconnexion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
