@@ -9,29 +9,101 @@
     tools:context=".GestionProfil">
 
     <TextView
-        android:id="@+id/tv_prenom"
+        android:id="@+id/bienvenue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp">
+        android:gravity="center"
+        android:text="@string/bienvenue">
 
     </TextView>
 
-    <TextView
-        android:id="@+id/tv_nom"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_prenom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp">
-    </TextView>
+        android:layout_marginTop="26dp"
+        android:hint="@string/entrez_votre_newprenom">
 
-    <TextView
-        android:id="@+id/tv_courriel"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiet_prenom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLines="2"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_nom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="26dp"
+        android:hint="@string/entrez_votre_new_nom">
 
-    </TextView>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiet_nom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLines="2"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_courriel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:hint="@string/entrez_new_email">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiet_courriel_new"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_mdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/new_mdp"
+        app:endIconMode="password_toggle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiet_mdp_new"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:maxLines="1"/>
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_mdp_confirmez"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/new_mdp_confirm"
+        app:endIconMode="password_toggle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiet_mdp_confirmez_new"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:maxLines="1"/>
+
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        android:id="@+id/btn_update_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/mettre_jour_mon_profil">

@@ -9,4 +9,12 @@
     <string name="afficher_informations_de_mon_profil">Afficher informations de mon profil</string>
     <string name="deconnexion">Deconnexion</string>
     <string name="mettre_jour_mon_profil">Mettre à jour mon profil</string>
+    <string name="entrez_new_email">Entrez nouveau email</string>
+    <string name="new_mdp">Entrez nouveau mot de passe</string>
+    <string name="new_mdp_confirm">Confirmez votre nouveau mot de passe</string>
+    <string name="bienvenue">Bienvenue!</string>
+    <string name="entrez_votre_prenom">Entrez votre prénom</string>
+    <string name="entrez_votre_nom">Entrez votre nom</string>
+    <string name="entrez_votre_newprenom">Entrez votre nouveau prénom</string>
+    <string name="entrez_votre_new_nom">Entrez votre nouveau nom</string>
 </resources>

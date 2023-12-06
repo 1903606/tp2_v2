@@ -11,13 +11,14 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class GestionBD extends AppCompatActivity {
 
-    Button btn_deconnexion;
+    Button btn_deconnexion, btn_afficher_info;
     FirebaseAuth bdAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestion_bd);
+        btn_afficher_info = findViewById(R.id.btn_afficher_info);
 
         bdAuth = FirebaseAuth.getInstance();
         btn_deconnexion = findViewById(R.id.btn_deconnexion);
@@ -27,6 +28,15 @@ public class GestionBD extends AppCompatActivity {
                 bdAuth.signOut();
                 Intent intent_retour_main = new Intent(GestionBD.this, MainActivity.class);
                 startActivity(intent_retour_main);
+                finish();
+            }
+        });
+
+        btn_afficher_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_afficher_info= new Intent(GestionBD.this, GestionProfil.class);
+                startActivity(intent_afficher_info);
                 finish();
             }
         });
