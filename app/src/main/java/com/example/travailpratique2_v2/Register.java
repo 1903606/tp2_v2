@@ -20,10 +20,12 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Register extends AppCompatActivity {
 
-    TextInputEditText tiet_courriel, tiet_mdp, tiet_mdp_confirmez, tiet_prenom, tiet_nom;
+    TextInputEditText tiet_courriel, tiet_mdp, tiet_mdp_confirmez, tiet_prenom, tiet_nom, tiet_gender, tiet_telephone;
     Button btn_register;
     FirebaseAuth bdAuth;
     Dialog bteDialog;
@@ -39,6 +41,8 @@ public class Register extends AppCompatActivity {
         btn_register = findViewById(R.id.btn_register);
         tiet_prenom = findViewById(R.id.tiet_prenom);
         tiet_nom = findViewById(R.id.tiet_nom);
+        tiet_gender = findViewById(R.id.tiet_gender);
+        tiet_telephone = findViewById(R.id.tiet_telephone);
 
 
 
@@ -52,16 +56,10 @@ public class Register extends AppCompatActivity {
                 String mdp_confirmez = tiet_mdp_confirmez.getText().toString();
                 String prenom = tiet_prenom.getText().toString();
                 String nom = tiet_nom.getText().toString();
+                String gender = tiet_gender.getText().toString();
+                String telephone = tiet_telephone.getText().toString();
 
 
-                if (TextUtils.isEmpty(courriel)){
-                    Toast.makeText(Register.this, "Please enter email", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if(TextUtils.isEmpty(mdp)){
-                    Toast.makeText(Register.this, "Please enter password", Toast.LENGTH_SHORT).show();
-                    return;
-                }
                 if (TextUtils.isEmpty(prenom)){
                     Toast.makeText(Register.this, "Please enter your first name", Toast.LENGTH_SHORT).show();
                     return;
@@ -70,6 +68,23 @@ public class Register extends AppCompatActivity {
                     Toast.makeText(Register.this, "Please enter last name", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if (TextUtils.isEmpty(gender)){
+                    Toast.makeText(Register.this, "Please enter your gender", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(TextUtils.isEmpty(telephone)){
+                    Toast.makeText(Register.this, "Please enter your phone", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(courriel)){
+                    Toast.makeText(Register.this, "Please enter email", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(TextUtils.isEmpty(mdp)){
+                    Toast.makeText(Register.this, "Please enter password", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 if(TextUtils.isEmpty(mdp_confirmez)){
                     Toast.makeText(Register.this, "Please validate your password", Toast.LENGTH_SHORT).show();
                     return;
@@ -87,6 +102,11 @@ public class Register extends AppCompatActivity {
                     Toast.makeText(Register.this, "Please minimum 10 caracters", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if(telephone.length() < 10 && telephone.length() > 10){
+                    Toast.makeText(Register.this, "Please enter 10 caracters", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
 
 
                 if(Patterns.EMAIL_ADDRESS.matcher(courriel).matches()){
@@ -108,12 +128,16 @@ public class Register extends AppCompatActivity {
         tiet_mdp_confirmez = findViewById(R.id.tiet_mdp_confirmez);
         tiet_prenom = findViewById(R.id.tiet_prenom);
         tiet_nom = findViewById(R.id.tiet_nom);
+        tiet_gender = findViewById(R.id.tiet_gender);
+        tiet_telephone = findViewById(R.id.tiet_telephone);
 
         String courriel = tiet_courriel.getText().toString();
         String mdp = tiet_mdp.getText().toString();
         String mdp_confirmez = tiet_mdp_confirmez.getText().toString();
         String prenom = tiet_prenom.getText().toString();
         String nom = tiet_nom.getText().toString();
+        String gender = tiet_gender.getText().toString();
+        String telephone = tiet_telephone.getText().toString();
 
 
         bdAuth.createUserWithEmailAndPassword(courriel, mdp)
@@ -123,6 +147,10 @@ public class Register extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toast.makeText(Register.this, "Utilisateur success", Toast.LENGTH_SHORT).show();
                             FirebaseUser usager = bdAuth.getCurrentUser();
+                            User writeUserDetails = new User(prenom, nom, gender, telephone);
+                            DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered users");
+
+                            referenceProfile.child(usager.getUid()).setValue(writeUserDetails);
                             if(usager!=null){
                                 Intent intent_login_view = new Intent(Register.this, MainActivity.class );
                                 startActivity(intent_login_view);

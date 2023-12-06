@@ -17,4 +17,6 @@
     <string name="entrez_votre_nom">Entrez votre nom</string>
     <string name="entrez_votre_newprenom">Entrez votre nouveau prénom</string>
     <string name="entrez_votre_new_nom">Entrez votre nouveau nom</string>
+    <string name="entrez_votre_telephone">Entrez votre téléphone</string>
+    <string name="entrez_votre_genre">Entrez votre genre</string>
 </resources>

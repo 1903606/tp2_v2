@@ -34,6 +34,8 @@
             />
     </com.google.android.material.textfield.TextInputLayout>
 
+
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_nom"
         android:layout_width="match_parent"
@@ -49,7 +51,37 @@
             android:maxLines="2"
             />
     </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_gender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:hint="@string/entrez_votre_genre">
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiet_gender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLines="2"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_telephone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:hint="@string/entrez_votre_telephone">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiet_telephone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLines="2"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_courriel"
@@ -83,6 +115,7 @@
 
 
     </com.google.android.material.textfield.TextInputLayout>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_mdp_confirmez"

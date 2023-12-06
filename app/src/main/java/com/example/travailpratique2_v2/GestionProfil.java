@@ -19,15 +19,22 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class GestionProfil extends AppCompatActivity {
 
-    TextView bienvenue;
+    TextView tv_bienvenue, tv_prenom,tv_nom;
     FirebaseAuth bdAuth;
 
-    TextInputEditText tiet_courriel, tiet_mdp, tiet_mdp_confirmez, tiet_prenom, tiet_nom;
+    TextInputEditText tiet_courriel, tiet_mdp, tiet_mdp_confirmez, tiet_prenom, tiet_nom,tiet_gender,tiet_telephone;
 
+    private String prenom, nom,gender,telephone;
     Button btn_update_info;
 
     @Override
@@ -35,14 +42,25 @@ public class GestionProfil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestion_profil);
 
-        bienvenue = findViewById(R.id.bienvenue);
+        tv_bienvenue = findViewById(R.id.bienvenue);
+        tv_prenom = findViewById(R.id.tv_prenom);
+        tv_nom = findViewById(R.id.tv_nom);
+
         btn_update_info = findViewById(R.id.btn_update_info);
         tiet_courriel = findViewById(R.id.tiet_courriel_new);
         tiet_mdp = findViewById(R.id.tiet_mdp_new);
         tiet_mdp_confirmez = findViewById(R.id.tiet_mdp_confirmez_new);
         tiet_prenom = findViewById(R.id.tiet_prenom);
         tiet_nom = findViewById(R.id.tiet_nom);
+        tiet_gender = findViewById(R.id.tiet_gender);
+        tiet_telephone = findViewById(R.id.tiet_telephone);
         bdAuth = FirebaseAuth.getInstance();
+
+        FirebaseUser usager = bdAuth.getCurrentUser();
+        FirebaseAuth authProfile = FirebaseAuth.getInstance();
+        showUserProfile(usager);
+
+
 
         btn_update_info.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,8 +108,6 @@ public class GestionProfil extends AppCompatActivity {
 
                 if (Patterns.EMAIL_ADDRESS.matcher(courriel).matches()) {
                     if (mdp.matches(mdp_confirmez) && mdp.length() >= 10) {
-                       // InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-                        //imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
                         updateEmail();
 
                     }
@@ -100,6 +116,40 @@ public class GestionProfil extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    private void showUserProfile(FirebaseUser firebaseUser){
+        String userId = firebaseUser.getUid();
+        DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered users");
+        referenceProfile.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User readUserDetails = snapshot.getValue(User.class);
+                if(readUserDetails != null){
+                    prenom = readUserDetails.prenom;
+                    nom = readUserDetails.nom;
+                    gender = readUserDetails.gender;
+                    telephone = readUserDetails.telephone;
+
+                    tv_prenom.setText(prenom);
+                    tv_nom.setText(nom);
+
+                    tiet_prenom.setText(prenom);
+                    tiet_nom.setText(nom);
+                    tiet_gender.setText(gender);
+                    tiet_telephone.setText(telephone);
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(GestionProfil.this, "Erreur de database", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
     }
 
