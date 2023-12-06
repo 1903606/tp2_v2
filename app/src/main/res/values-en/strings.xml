@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Travail Pratique 2_v2</string>
+    <string name="entrez_votre_mot_de_passe">Enter your password</string>
+    <string name="confirmez_votre_mot_de_passe">Confirm your password</string>
+    <string name="entrez_votre_email">Enter your email</string>
+    <string name="connexion">Login</string>
+    <string name="register">Register</string>
+    <string name="vous_tes_connect">Your are connected!</string>
+    <string name="afficher_informations_de_mon_profil">Show profil information</string>
+    <string name="deconnexion">Sign out</string>
+    <string name="mettre_jour_mon_profil">Update profil informationl</string>
+    <string name="entrez_new_email">Enter new email</string>
+    <string name="new_mdp">Enter new password</string>
+    <string name="new_mdp_confirm">Confirm your new password</string>
+    <string name="bienvenue">Welcome!</string>
+    <string name="entrez_votre_prenom">Enter you first name</string>
+    <string name="entrez_votre_nom">Enter your last name</string>
+    <string name="entrez_votre_newprenom">Enter you new first name</string>
+    <string name="entrez_votre_new_nom">Enter you new last name</string>
+    <string name="entrez_votre_telephone">Enter you phone number</string>
+    <string name="entrez_votre_genre">Enter your gender</string>
+</resources>
