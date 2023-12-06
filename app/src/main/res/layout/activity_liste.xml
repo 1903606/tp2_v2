@@ -5,12 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_gravity="center"
     tools:context=".ListeActivity">
 
     <ListView
         android:id="@+id/lv_usager"
         android:layout_width="match_parent"
-        android:layout_height="391dp" />
+        android:layout_height="wrap_content" />
+
+    <fragment
+        android:id="@+id/fragmentListe"
+        android:name="com.example.travailpratique2_v2.ListeFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        tools:layout="@layout/fragment_liste" />
 
 
     <Button
@@ -23,6 +32,7 @@
     </Button>
 
     <Button
+
         android:id="@+id/btn_supprimer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

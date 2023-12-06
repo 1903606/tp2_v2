@@ -3,8 +3,11 @@ package com.example.travailpratique2_v2;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -68,6 +71,24 @@ public class ListeActivity extends AppCompatActivity {
             }
         });
         lv_usager.setAdapter(adapter);
+
+        lv_usager.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                User user = listeUser.get(position);
+                Bundle bundle = new Bundle();
+                bundle.putString("nom", user.nom);
+                bundle.putString("gender", user.gender + "");
+                bundle.putString("telephone", user.telephone+ "");
+
+                FragmentManager fm = getSupportFragmentManager();
+                fm.beginTransaction()
+                        .replace(R.id.fragmentListe, ListeFragment.class, bundle)
+                        .commit();
+            }
+        });
+
+
     }
 
 }

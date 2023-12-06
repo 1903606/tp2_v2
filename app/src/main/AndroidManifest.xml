@@ -19,20 +19,25 @@
             android:exported="false" />
         <activity
             android:name=".AuthActivity"
+
             android:exported="false" />
         <activity
             android:name=".ListeActivity"
+            android:parentActivityName=".GestionProfil"
             android:exported="false" />
         <activity
             android:name=".GestionProfil"
+            android:parentActivityName=".MainActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".GestionBD"
+            android:parentActivityName=".MainActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".Register"
+            android:parentActivityName=".MainActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity

@@ -22,4 +22,6 @@
     <string name="afficher_liste">Afficher la liste des utilisateurs</string>
     <string name="mise_ajour">Mise à jour</string>
     <string name="supprimer">Supprimer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
