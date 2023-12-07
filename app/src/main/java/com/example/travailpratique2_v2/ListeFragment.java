@@ -21,7 +21,6 @@ public class ListeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //get info form bundle
         if(getArguments() != null){
             nom = getArguments().getString("nom");
             gender = getArguments().getString("gender");

@@ -15,30 +15,33 @@
         android:theme="@style/Theme.AppCompat.Light"
         tools:targetApi="31">
         <activity
+            android:parentActivityName=".ListeActivity"
+            android:name=".UpdateListeActivity"
+            android:exported="false" />
+        <activity
             android:name=".InsertActivity"
             android:exported="false" />
         <activity
             android:name=".AuthActivity"
-
             android:exported="false" />
         <activity
             android:name=".ListeActivity"
-            android:parentActivityName=".GestionProfil"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".GestionProfil" />
         <activity
             android:name=".GestionProfil"
-            android:parentActivityName=".MainActivity"
             android:exported="false"
+            android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".GestionBD"
-            android:parentActivityName=".MainActivity"
             android:exported="false"
+            android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".Register"
-            android:parentActivityName=".MainActivity"
             android:exported="false"
+            android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".MainActivity"

@@ -1,16 +1,26 @@
 package com.example.travailpratique2_v2;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,12 +34,27 @@ public class ListeActivity extends AppCompatActivity {
     private ListView lv_usager;
     private ArrayList<User> listeUser;
 
+    private Button btn_mise_a_jour,btn_supprimer;
+
     DatabaseReference reference;
+    FirebaseAuth bdAuth;
+
+
+    private int index = -1;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste);
+
+        btn_mise_a_jour = findViewById(R.id.btn_mise_a_jour);
+        btn_supprimer = findViewById(R.id.btn_supprimer);
+        bdAuth = FirebaseAuth.getInstance();
+        FirebaseUser usager = bdAuth.getCurrentUser();
+
+
 
         lv_usager = findViewById(R.id.lv_usager);
         listeUser = new ArrayList<User>();
@@ -75,6 +100,7 @@ public class ListeActivity extends AppCompatActivity {
         lv_usager.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                index = position;
                 User user = listeUser.get(position);
                 Bundle bundle = new Bundle();
                 bundle.putString("nom", user.nom);
@@ -87,6 +113,42 @@ public class ListeActivity extends AppCompatActivity {
                         .commit();
             }
         });
+
+        btn_mise_a_jour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_update_view = new Intent(ListeActivity.this, UpdateListeActivity.class);
+                FirebaseUser usager = bdAuth.getCurrentUser();
+                User user = (User) listeUser.get(index);
+                Bundle bundle = new Bundle();
+                intent_update_view.putExtra("prenom",user.getPrenom());
+                intent_update_view.putExtra("nom",user.getNom());
+                intent_update_view.putExtra("gender",user.getGender());
+                intent_update_view.putExtra("telephone",user.getTelephone());
+                intent_update_view.putExtra("email", usager.getEmail());
+                startActivity(intent_update_view);
+                finish();
+            }
+        });
+
+        ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
+
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>(){
+
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == Activity.RESULT_OK)
+                        {
+                            Bundle bundle = result.getData().getExtras();
+                            String rep;
+                            //rep = bundle.get("REP1");
+                        }
+                    }
+                }
+        );
+
+
 
 
     }
