@@ -18,7 +18,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -131,6 +134,46 @@ public class ListeActivity extends AppCompatActivity {
             }
         });
 
+        btn_supprimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(listeUser != null){
+                    User user = (User) listeUser.get(index);
+                    FirebaseUser usager = bdAuth.getCurrentUser();
+                    ArrayAdapter<User> adapter =(ArrayAdapter<User>) lv_usager.getAdapter();
+                    reference = FirebaseDatabase.getInstance().getReference("Registered users");
+                    reference.child(usager.getUid()).child(user.getPrenom()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(ListeActivity.this, "User effacer avec sucess", Toast.LENGTH_SHORT).show();
+                                adapter.remove(adapter.getItem(index));
+
+                                Bundle bundle = new Bundle();
+                                bundle.putString("prenom", "");
+                                bundle.putString("nom","");
+                                bundle.putString("gender","");
+                                bundle.putString("telephone","");
+
+                                FragmentManager fm = getSupportFragmentManager();
+                                fm.beginTransaction()
+                                        .replace(R.id.fragmentListe, ListeFragment.class, bundle)
+                                        .commit();
+
+
+
+
+                            }else{
+                                Toast.makeText(ListeActivity.this, "Erreur suppression", Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+                    });
+                }
+            }
+        });
+
+
         ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
 
                 new ActivityResultContracts.StartActivityForResult(),
@@ -148,6 +191,12 @@ public class ListeActivity extends AppCompatActivity {
                 }
         );
 
+
+
+
+    }
+
+    private void effacerDonnees(View view){
 
 
 

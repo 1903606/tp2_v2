@@ -161,15 +161,19 @@ public class GestionProfil extends AppCompatActivity {
         tiet_mdp_confirmez = findViewById(R.id.tiet_mdp_confirmez_new);
         tiet_prenom = findViewById(R.id.tiet_prenom);
         tiet_nom = findViewById(R.id.tiet_nom);
+        tiet_gender = findViewById(R.id.tiet_gender);
+        tiet_telephone = findViewById(R.id.tiet_telephone);
 
         String newEmail = tiet_courriel.getText().toString();
         String newMdp = tiet_mdp.getText().toString();
         String newMdp_confirm = tiet_mdp_confirmez.getText().toString();
         String newPrenom = tiet_prenom.getText().toString();
         String newNom = tiet_nom.getText().toString();
+        String newGender = tiet_gender.getText().toString();
+        String newTelephone = tiet_telephone.getText().toString();
 
         UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder().
-                setDisplayName(newPrenom).setDisplayName(newNom).setDisplayName(newMdp).setDisplayName(newMdp_confirm).build();
+                setDisplayName(newPrenom).setDisplayName(newNom).setDisplayName(newMdp).setDisplayName(newMdp_confirm).setDisplayName(newGender).setDisplayName(newTelephone).build();
         usager.updateProfile(profileUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
